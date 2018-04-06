@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    card:cardElevation="20dp"
+    card:cardCornerRadius="20dp"
+    card:cardMaxElevation="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorShareTitlePurple"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/card_continue_content"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="25dp"
+            android:gravity="left|center_vertical"
+            android:text="这是一条接龙"
+            android:textColor="@color/colorDarkPurple"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/card_continue_keyV"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/key"/>
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:id="@+id/card_continue_key"
+                android:text="Key word"/>
+
+            <ImageView
+                android:id="@+id/card_continue_fire"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="150dp"
+                android:background="@drawable/fire2" />
+
+            <TextView
+                android:layout_margin="5dp"
+                android:layout_width="75dp"
+                android:layout_height="25dp"
+                android:id="@+id/card_continue_fireNum"
+                android:text="Fire number"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/textView2"
+        android:background="@drawable/movie"
+        android:src="@drawable/dragon"
+        android:layout_marginTop="64dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/login_number"
+        android:lines="1"
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_below="@+id/textView2"
+        app:met_baseColor="@color/colorLightPurple"
+        app:met_primaryColor="@color/colorLightPurple"
+        app:met_floatingLabelText="用户名"/>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/login_password"
+        android:lines="1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@+id/login_number"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:met_baseColor="@color/colorLightPurple"
+        app:met_primaryColor="@color/colorLightPurple"
+        app:met_floatingLabelText="密码"/>
+
+    <Button
+        android:id="@+id/login_login"
+        android:text="LOG IN"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:shadowRadius="3"
+        android:shadowDy="5"
+        android:shadowDx="3"
+        android:background="@drawable/loginbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/login_password"
+        android:layout_width="93dp"
+        android:layout_height="36dp" />
+
+    <TextView
+        android:id="@+id/login_goto_register"
+        android:text="没有账户，去注册"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/login_login"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
