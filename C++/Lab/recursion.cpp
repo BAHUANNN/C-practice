@@ -86,29 +86,23 @@ void personalCurriculum(Map<string, Vector<string>> & prereqMap,string goal) {
 
 string generate(Map<string, Vector<string> > & grammar, string symbol) {
 
-    Vector<string> tempV = grammar[symbol];
+    Vector<string> tempV;
 
-    string str = tempV[randomInteger(0,tempV.size()-1)];
+    string str,sentenceStr;
 
-    TokenScanner ts(str);
+    if(grammar.containsKey(symbol)){
+        tempV = grammar.get(symbol);
+        str = tempV.get(randomInteger(0,tempV.size()-1));
 
-    while(ts.hasMoreTokens()){
-
-       string token = ts.nextToken();
-
-       Vector<string> vt = grammar[token];
-
-       cout<<token<<endl;
-
-
-       if(vt.size() > 0){
-           generate(grammar,token);
-       }else{
-
-       }
+        TokenScanner ts(str);
+        while(ts.hasMoreTokens()){
+           string token = ts.nextToken();
+           sentenceStr += generate(grammar,token);
+        }
+    }else{
+        sentenceStr = symbol;
     }
-
-    return " ";
+    return sentenceStr;
 }
 
 //自定义方法一~~~4
