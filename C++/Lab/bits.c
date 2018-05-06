@@ -164,9 +164,8 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-
-    return ((~(1 << 31)) >> (n+~0)) & (x >> n);
-    //ｉ＋（～０）＝ｉ－１；用１防止算数右移
+    int a = ((1 << 31) >> n) << 1;
+    return (x >> n) & ~ a;
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -183,10 +182,10 @@ int bitCount(int x) {
     int e = 0x0000ffff;
 
     int count = (x&a)+((x>>1)&a);
-    count = (x&b)+((x>>2)&b);
-    count = (x&c)+((x>>4)&c);
-    count = (x&d)+((x>>8)&d);
-    count = (x&e)+((x>>16)&e);
+    count = (count&b)+((count>>2)&b);
+    count = (count&c)+((count>>4)&c);
+    count = (count&d)+((count>>8)&d);
+    count = (count&e)+((count>>16)&e);
     return count;
 }
 /* 
@@ -218,7 +217,7 @@ int tmin(void) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-    return ! (x << 1) >> n;
+    return !(((x>>(n+(~0)))+1)>>1);
 }
 /* 
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
@@ -229,7 +228,7 @@ int fitsBits(int x, int n) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-    return (x >> n) + (x >> 31);
+    return (x>>n)+((x>>31)&1);
 }
 /* 
  * negate - return -x 
@@ -273,12 +272,12 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4
  */
 int ilog2(int x) {
-    int ans = 0;
-    ans = a + ((!!(x>>(16 + a)))<<4);
-    ans = a + ((!!(x>>(8 + a)))<<3);
-    ans = a + ((!!(x>>(4 + a)))<<2);
-    ans = a + ((!!(x>>(2 + a)))<<1);
-    ans = a + ((!!(x>>(1 + a)))<<0);
+    int a = 0;
+    a = a + ((!!(x>>(16 + a)))<<4);
+    a = a + ((!!(x>>(8 + a)))<<3);
+    a = a + ((!!(x>>(4 + a)))<<2);
+    a = a + ((!!(x>>(2 + a)))<<1);
+    a = a + ((!!(x>>(1 + a)))<<0);
 
     return a;
 }
@@ -294,8 +293,8 @@ int ilog2(int x) {
  *   Rating: 2
  */
 unsigned float_neg(unsigned uf) {
-    unsigned a = x^(0x80000000);
-    if(x&(0x7fffffff) > 0x7f800000) a = x;
+    unsigned a = uf^(0x80000000);
+    if(uf & 0x7fffffff > 0x7f800000) a = uf;
     return a;
 }
 /* 
